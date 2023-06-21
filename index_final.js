@@ -111,16 +111,14 @@ const findCombinationsFromText = (textCombination) => {
 
   // Push list of arrays here
   const generateSuccessiveArrays = (originalArray) => {
-    const result = [];
+    let result = [originalArray];
 
-    for (let i = originalArray.length - 1; i > 0; i--) {
-      if (i !== 0) {
-        const successiveArray = originalArray.slice(i - 1);
-        successiveArray.pop();
-        result.push(successiveArray);
-      }
+    for (i = 0; i <= originalArray.length - 1; i++) {
+      let pushedArray = [...originalArray].reverse().slice(i);
+      result.push([...pushedArray].reverse());
     }
-
+    result = result.slice(1);
+    console.log(result);
     return result;
   };
 
